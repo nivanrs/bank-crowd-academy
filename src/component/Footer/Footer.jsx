@@ -10,7 +10,7 @@ export default function Footer(props) {
   return(
     <footer>
     <Navbar style={navbar}>
-              <Navbar.Brand href="#home" style={{ color: '#80C9F0'  }}>@DTS-2020-FEBE UGM 04</Navbar.Brand>
+              <Navbar.Brand href="#home" style={{ color: '#1A73A3'  }}>@DTS-2020-FEBE UGM 04</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
          
     </Navbar>

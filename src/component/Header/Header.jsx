@@ -11,15 +11,15 @@ export default function Header(props) {
   return(
     <header>
     <Navbar style={navbar}>
-      <Navbar.Brand href="#home" style={{ color: '#80C9F0' }}>Bank Crowd Academy</Navbar.Brand>
+      <Navbar.Brand href="#home" style={{ color: '#1A73A3' }}>Bank Crowd Academy</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-        <Nav.Link href="" style={{ color: '#80C9F0' }}>Home</Nav.Link>
-      <Nav.Link href="#link" style={{ color: '#80C9F0' }}>Menu</Nav.Link>
+        <Nav.Link href="" style={{ color: '#1A73A3' }}>Home</Nav.Link>
+      <Nav.Link href="#link" style={{ color: '#1A73A3' }}>Menu</Nav.Link>
       </Nav>
     <Form inline>
-      <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+      <FormControl type="text" placeholder="Search" className="mr-sm-4" />
         <Button variant="dark">Search</Button>
     </Form>
      </Navbar.Collapse>
