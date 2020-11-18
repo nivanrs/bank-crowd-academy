@@ -10,6 +10,7 @@ export default function Register(props) {
     <Container fluid="md">
   <Row>
     <Col>
+    <h2>REGISTRASI</h2>
     <Form>
     <Form.Group controlId="formBasicUsernamel">
         <Form.Label>Username</Form.Label>

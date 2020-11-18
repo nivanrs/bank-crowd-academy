@@ -9,8 +9,8 @@ export default function Login(props) {
   return (
     <Container fluid="md">
   <Row>
-
     <Col>
+    <h2>MASUK</h2>
     <Form>
       <Form.Group controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
