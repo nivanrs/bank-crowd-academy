@@ -30,7 +30,6 @@ function App() {
         </Row>
       </Container>
       <br />
-      <CoursePage/>
       <Footer />
     </div>
   );
