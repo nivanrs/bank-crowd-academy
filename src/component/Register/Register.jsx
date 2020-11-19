@@ -1,16 +1,13 @@
 import { Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { Container } from "react-bootstrap";
-import { Row } from "react-bootstrap";
-import { Col } from "react-bootstrap";
-
 
 export default function Register(props) {
   return (
     <Container fluid="md">
-  <Row>
-    <Col>
     <h2>REGISTRASI</h2>
+    <hr/>
+    <br />
     <Form>
     <Form.Group controlId="formBasicUsernamel">
         <Form.Label>Username</Form.Label>
@@ -28,8 +25,6 @@ export default function Register(props) {
         Daftar
       </Button>
     </Form>
-    </Col>
-  </Row>
 </Container>
   );
 }
