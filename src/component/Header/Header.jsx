@@ -8,8 +8,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { Image } from "react-bootstrap";
 import icon from "../../assets/icon.png";
-
-
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 export default function Header(props) {
   return (
@@ -59,24 +58,19 @@ export default function Header(props) {
               </NavDropdown.Item>
               <NavDropdown.Item href="#action/3.5">Menejemen</NavDropdown.Item>
             </NavDropdown>
-            </Nav>
-            <Form inline>
-              <FormControl
-                className="mr-sm-2"
-                type="text"
-                placeholder="Search"
-              />
-              <Button variant="light" className="mr-sm-2">
-                Search
-              </Button>
-            </Form>
-            <Nav.Link href="" style={{ color: "#1A73A3" }} className="mr-sm-2">
-              Masuk
-            </Nav.Link>
-            <Nav.Link href="" style={{ color: "#1A73A3" }} className="mr-sm-2">
-              Daftar
-            </Nav.Link>
-          
+          </Nav>
+          <Form inline>
+            <FormControl className="mr-sm-2" type="text" placeholder="Search" />
+            <Button variant="light" className="mr-sm-2">
+              Search
+            </Button>
+          </Form>
+          <Nav.Link as={Link} style={{ color: "#1A73A3" }} className="mr-sm-2">
+            Masuk
+          </Nav.Link>
+          <Nav.Link as={Link} style={{ color: "#1A73A3" }} className="mr-sm-2">
+            Daftar
+          </Nav.Link>
         </Navbar.Collapse>
       </Navbar>
     </header>
