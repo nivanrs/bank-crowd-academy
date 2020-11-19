@@ -7,6 +7,8 @@ import { FormControl } from "react-bootstrap";
 import React from "react";
 import { Button } from "react-bootstrap";
 import { Image } from "react-bootstrap";
+import icon from "../../assets/icon.png";
+
 
 
 export default function Header(props) {
@@ -16,7 +18,7 @@ export default function Header(props) {
         <Navbar.Brand href="#home" style={{ color: "#1A73A3" }}>
           <Image
             alt=""
-            src="/icon.png"
+            src={icon}
             width="30"
             height="30"
             className="d-inline-block align-top"
