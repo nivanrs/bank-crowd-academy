@@ -50,12 +50,12 @@ export default class Register extends React.Component {
         <br />
         <Form onSubmit={this.handleSubmit}>
           <Form.Group>
-            <Form.Label>First Name</Form.Label>
-            <Form.Control type="text" placeholder="Masukkan First Name" name="FirstName" onChange={this.handleChange} />
+            <Form.Label>Nama Depan</Form.Label>
+            <Form.Control type="text" placeholder="Masukkan Nama Depan" name="FirstName" onChange={this.handleChange} />
           </Form.Group>
           <Form.Group>
-            <Form.Label>Last Name</Form.Label>
-            <Form.Control type="text" placeholder="Masukkan Last Name" name="LastName" onChange={this.handleChange} />
+            <Form.Label>Nama Belakang</Form.Label>
+            <Form.Control type="text" placeholder="Masukkan Nama Belakang" name="LastName" onChange={this.handleChange} />
           </Form.Group>
           <Form.Group>
             <Form.Label>Email</Form.Label>
@@ -66,7 +66,7 @@ export default class Register extends React.Component {
             <Form.Control type="password" placeholder="Masukkan Password" name="password" onChange={this.handleChange} />
           </Form.Group>
           <Form.Group>
-            <Form.Label>Pilih Kebutuhan Akun</Form.Label>
+            <Form.Label>Pilih Jenis Akun</Form.Label>
             <Form.Control as="select" name="role" onChange={this.handleChange}>
               <option value="1">Pengajar</option>
               <option value="2">Pelajar</option>
