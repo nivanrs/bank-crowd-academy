@@ -9,8 +9,7 @@ export default function KursusPilihan(props) {
         <Card.Body>
           <Card.Title>Investasi untuk Pemula</Card.Title>
           <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
+            Kursus Investasi untuk pemula. Anda akan mendapatkan cuan banyak jika mengikuti kursus ini.
           </Card.Text>
         </Card.Body>
       </Card>
@@ -19,8 +18,7 @@ export default function KursusPilihan(props) {
         <Card.Body>
           <Card.Title>Perencanaan Keuangan untuk Pemula</Card.Title>
           <Card.Text>
-            This card has supporting text below as a natural lead-in to
-            additional content.{" "}
+            Kursus perencanaan keuangan agar anda dapat mengatur keuangan dengan baik.
           </Card.Text>
         </Card.Body>
       </Card>
@@ -29,8 +27,7 @@ export default function KursusPilihan(props) {
         <Card.Body>
           <Card.Title>Paham Laporan Keuangan</Card.Title>
           <Card.Text>
-            This card has supporting text below as a natural lead-in to
-            additional content.{" "}
+            Memhami Laporan Keuangan Kuartalan untuk investasi jangka panjang.
           </Card.Text>
         </Card.Body>
       </Card>      
@@ -39,8 +36,7 @@ export default function KursusPilihan(props) {
         <Card.Body>
           <Card.Title>Belajar Akuntansi dengan Mudah</Card.Title>
           <Card.Text>
-            This card has supporting text below as a natural lead-in to
-            additional content.{" "}
+            Kursus akuntansi untuk persiapan sertifikasi akuntanssi.
           </Card.Text>
         </Card.Body>
       </Card>
