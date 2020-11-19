@@ -1,4 +1,4 @@
-import icon from "./icon.png";
+
 import "./App.css";
 import Footer from "./component/Footer/Footer";
 import Header from "./component/Header/Header";
@@ -14,8 +14,11 @@ function App() {
       <Header />
       <Banner />
       <Container>
+      <h2 style={{textAlign:"left"}} >Kursus Pilihan</h2>
+        <br/>
       <KursusPilihan/>
       <br />
+      <hr />
         <Row>
           <Col>
             <Register />
