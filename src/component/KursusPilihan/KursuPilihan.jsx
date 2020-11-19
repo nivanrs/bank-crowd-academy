@@ -1,11 +1,19 @@
 import { CardDeck } from "react-bootstrap";
 import { Card } from "react-bootstrap";
+import invest from "../../assets/course-invest.png";
+import finance from "../../assets/course-personal-finance.jpg";
+import report from "../../assets/course-financial-report.png";
+import accounting from "../../assets/course-accounting.jpg";
+
 
 export default function KursusPilihan(props) {
   return (
     <CardDeck>
       <Card>
-        <Card.Img variant="top" src="holder.js/100px160" />
+        <Card.Img 
+        variant="top" 
+        src={invest} 
+        />
         <Card.Body>
           <Card.Title>Investasi untuk Pemula</Card.Title>
           <Card.Text>
@@ -14,7 +22,10 @@ export default function KursusPilihan(props) {
         </Card.Body>
       </Card>
       <Card>
-        <Card.Img variant="top" src="holder.js/100px160" />
+      <Card.Img 
+        variant="top" 
+        src={finance} 
+        />
         <Card.Body>
           <Card.Title>Perencanaan Keuangan untuk Pemula</Card.Title>
           <Card.Text>
@@ -23,7 +34,10 @@ export default function KursusPilihan(props) {
         </Card.Body>
       </Card>
       <Card>
-        <Card.Img variant="top" src="holder.js/100px160" />
+      <Card.Img 
+        variant="top" 
+        src={report} 
+        />
         <Card.Body>
           <Card.Title>Paham Laporan Keuangan</Card.Title>
           <Card.Text>
@@ -32,7 +46,10 @@ export default function KursusPilihan(props) {
         </Card.Body>
       </Card>      
       <Card>
-        <Card.Img variant="top" src="holder.js/100px160" />
+      <Card.Img 
+        variant="top" 
+        src={accounting} 
+        />
         <Card.Body>
           <Card.Title>Belajar Akuntansi dengan Mudah</Card.Title>
           <Card.Text>
