@@ -1,3 +1,4 @@
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar } from "react-bootstrap";
 import { NavDropdown } from "react-bootstrap";
@@ -6,16 +7,24 @@ import { Form } from "react-bootstrap";
 import { FormControl } from "react-bootstrap";
 import React from "react";
 import { Button } from "react-bootstrap";
+import { Image } from "react-bootstrap";
+
+
 
 export default function Header(props) {
   return (
     <header>
       <Navbar style={navbar} sticky="top">
-        {" "}
-        {/*Supaya fix di atas*/}
-        <Navbar.Brand href="#home" style={{ color: "#1A73A3" }}>
-          Bank Crowd Academy
-        </Navbar.Brand>
+    <Navbar.Brand href="#home" style={{ color: "#1A73A3" }}>
+      <Image
+        alt=""
+        src="/icon.png"
+        width="30"
+        height="30"
+        className="d-inline-block align-top"
+      />{' '}
+      Bank Crowd Academy
+    </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
@@ -38,18 +47,24 @@ export default function Header(props) {
               </NavDropdown.Item>
             </NavDropdown>
             <NavDropdown
-              title="Tren"
+              title="Kategori"
               id="basic-nav-dropdown"
               style={{ color: "#1A73A3" }}
             >
               <NavDropdown.Item href="#action/3.1">
-                Kursus Paling Top
+                Ekonomi
               </NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
-                Kelas Paling Top
+                Investasi
               </NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">
-                Pengajar Paling Top
+                Keuangan
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.4">
+                Kewirausahaan
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.5">
+                Menejemen
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
