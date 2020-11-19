@@ -56,6 +56,7 @@ export default function Header(props) {
               </NavDropdown.Item>
               <NavDropdown.Item href="#action/3.5">Menejemen</NavDropdown.Item>
             </NavDropdown>
+            </Nav>
             <Form inline>
               <FormControl
                 className="mr-sm-2"
@@ -72,7 +73,7 @@ export default function Header(props) {
             <Nav.Link href="" style={{ color: "#1A73A3" }} className="mr-sm-2">
               Daftar
             </Nav.Link>
-          </Nav>
+          
         </Navbar.Collapse>
       </Navbar>
     </header>

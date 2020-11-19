@@ -7,6 +7,7 @@ import Register from "./component/Register/Register";
 import Banner from "./component/Jumbotron/Jumbotron";
 import KursusPilihan from "./component/KursusPilihan/KursuPilihan";
 import { Row, Col, Container } from "react-bootstrap";
+import CoursePage from "./component/CoursePage/CoursePage";
 
 function App() {
   return (
