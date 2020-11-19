@@ -5,7 +5,7 @@ import Header from "./component/Header/Header";
 import Login from "./component/Login/Login";
 import Register from "./component/Register/Register";
 import Banner from "./component/Jumbotron/Jumbotron";
-import KursusPilihan from "./component/KursusSaya/KursuSaya";
+import KursusPilihan from "./component/KursusPilihan/KursuPilihan";
 import { Row, Col, Container } from "react-bootstrap";
 
 function App() {
