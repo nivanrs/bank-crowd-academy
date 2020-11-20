@@ -49,6 +49,8 @@ export default class Login extends React.Component {
             Masuk
           </Button>
         </Form>
+        <br/>
+        <br/>
       </Container>
     )
   }

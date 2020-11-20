@@ -79,6 +79,8 @@ export default class Register extends React.Component {
             Daftar
           </Button>
         </Form>
+        <br/>
+        <br/>
       </Container>
     )
   }
