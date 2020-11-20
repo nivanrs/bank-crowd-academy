@@ -29,7 +29,7 @@ export default function Header(props) {
             <Nav.Link href="/" style={{ color: "#1A73A3" }}>
               Beranda
             </Nav.Link>
-            <Nav.Link href="/srticle" style={{ color: "#1A73A3" }}>
+            <Nav.Link href="/article" style={{ color: "#1A73A3" }}>
               Artikel
             </Nav.Link>
             <NavDropdown

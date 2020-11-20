@@ -16,6 +16,8 @@ import {
 } from "react-router-dom";
 import CoursePage from "./screen/CoursePage/CoursePage";
 import ClassPage from "./screen/ClassPage/ClassPage";
+import ArticlePageList from "./screen/ArticlePageList/ArticlePageList";
+
 
 export default function App() {
   return (
@@ -32,6 +34,7 @@ export default function App() {
             <Register />
           </Route>
           <Route path="/article">
+            <ArticlePageList/>
           </Route>
           <Route path="/course">
             <CoursePage/>

@@ -49,6 +49,7 @@ export default class Login extends React.Component {
                 Masuk
               </Button>
             </Form>
+            <p>Belum Memiliki akun? <a href='/register'>Daftar</a></p>
           </Card.Body>
         </Card>
       </Container>

@@ -84,6 +84,7 @@ export default class Register extends React.Component {
               Daftar
             </Button>
             </Form>
+            <p>Sudah Memiliki akun? <a href='/login'>Masuk</a></p>
           </Card.Body>
         </Card>
       </Container>
