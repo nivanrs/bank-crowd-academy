@@ -14,7 +14,7 @@ export default function Header(props) {
   return (
     <header>
       <Navbar style={navbar} expand="lg">
-        <Navbar.Brand href="#home" style={{ color: "#1A73A3" }}>
+        <Navbar.Brand href="/" style={{ color: "#1A73A3" }}>
           <Image
             alt=""
             src={icon}
@@ -65,10 +65,10 @@ export default function Header(props) {
               Search
             </Button>
           </Form>
-          <Nav.Link as={Link} style={{ color: "#1A73A3" }} className="mr-sm-2">
+          <Nav.Link href='/login' style={{ color: "#1A73A3" }} className="mr-sm-2">
             Masuk
           </Nav.Link>
-          <Nav.Link as={Link} style={{ color: "#1A73A3" }} className="mr-sm-2">
+          <Nav.Link href='/register' style={{ color: "#1A73A3" }} className="mr-sm-2">
             Daftar
           </Nav.Link>
         </Navbar.Collapse>
