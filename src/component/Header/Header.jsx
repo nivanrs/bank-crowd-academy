@@ -12,7 +12,7 @@ import icon from "../../assets/icon.png";
 export default function Header(props) {
   return (
     <header>
-      <Navbar style={navbar} expand="lg">
+      <Navbar sticky="top" style={navbar} expand="lg">
         <Navbar.Brand href="/" style={{ color: "#1A73A3" }}>
           <Image
             alt=""
