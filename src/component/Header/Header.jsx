@@ -8,7 +8,6 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { Image } from "react-bootstrap";
 import icon from "../../assets/icon.png";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 export default function Header(props) {
   return (
@@ -27,8 +26,11 @@ export default function Header(props) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="" style={{ color: "#1A73A3" }}>
-              Home
+            <Nav.Link href="/" style={{ color: "#1A73A3" }}>
+              Beranda
+            </Nav.Link>
+            <Nav.Link href="/srticle" style={{ color: "#1A73A3" }}>
+              Artikel
             </Nav.Link>
             <NavDropdown
               title="Tren"
@@ -58,7 +60,26 @@ export default function Header(props) {
               </NavDropdown.Item>
               <NavDropdown.Item href="#action/3.5">Menejemen</NavDropdown.Item>
             </NavDropdown>
+            <NavDropdown
+              title="Kursus"
+              id="basic-nav-dropdown"
+              style={{ color: "#1A73A3" }}
+            >
+              <NavDropdown.Item href="/course">
+                Investasi
+              </NavDropdown.Item>
+            </NavDropdown>
+            <NavDropdown
+              title="Kelas"
+              id="basic-nav-dropdown"
+              style={{ color: "#1A73A3" }}
+            >
+              <NavDropdown.Item href="/class">
+                Investasi pemula
+              </NavDropdown.Item>
+            </NavDropdown>
           </Nav>
+          
           <Form inline>
             <FormControl className="mr-sm-2" type="text" placeholder="Search" />
             <Button variant="light" className="mr-sm-2">

@@ -14,19 +14,17 @@ export default function Banner(props) {
         <h1>Mari Belajar</h1>
         <h2>Dunia Perbankan yang seru menunggu anda</h2>
         <br></br>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" href='/register' type="submit">
           Daftar
         </Button>
         </Col>
         <Col>
-        <Container>
         <img 
         src={bannerImg} alt="study"
         height="250"
       width="250"
       className="rounded-circle"
         />
-        </Container>
         </Col>
         </Row>
       </Container>
