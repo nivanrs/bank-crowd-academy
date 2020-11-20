@@ -13,6 +13,7 @@ export default function ClassPage(props) {
         <Judul />
         <Video/>
       <Deskripsi />
+      <Silabus />
         <Like />
         <Comment />
         <ClassRegister />
@@ -38,6 +39,14 @@ function Deskripsi() {
       <h5>Deskripsi:</h5>
       <p>Kursus ini merupakan kursus yang mempelajari investasi untuk pemula</p>
     </div>
+  );
+}
+function Silabus() {
+  return (
+    <div>
+    <h5>Silabus:</h5>
+    <p> - Fundamental investasi</p>
+  </div>
   );
 }
 function Like() {
