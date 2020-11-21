@@ -3,9 +3,9 @@ import { Card } from "react-bootstrap";
 
 export default function KursusSaya(props) {
   return (
-<CardDeck>
+    <CardDeck>
       <Card>
-        <Card.Img variant="top" src="holder.js/100px160" />
+        <Card.Img variant="top" />
         <Card.Body>
           <Card.Title>Investasi untuk Pemula</Card.Title>
           <Card.Text>
@@ -15,7 +15,7 @@ export default function KursusSaya(props) {
         </Card.Body>
       </Card>
       <Card>
-        <Card.Img variant="top" src="holder.js/100px160" />
+        <Card.Img variant="top" />
         <Card.Body>
           <Card.Title>Perencanaan Keuangan untuk Pemula</Card.Title>
           <Card.Text>
@@ -25,7 +25,7 @@ export default function KursusSaya(props) {
         </Card.Body>
       </Card>
       <Card>
-        <Card.Img variant="top" src="holder.js/100px160" />
+        <Card.Img variant="top" />
         <Card.Body>
           <Card.Title>Paham Laporan Keuangan</Card.Title>
           <Card.Text>
@@ -35,7 +35,7 @@ export default function KursusSaya(props) {
         </Card.Body>
       </Card>      
       <Card>
-        <Card.Img variant="top" src="holder.js/100px160" />
+        <Card.Img variant="top" />
         <Card.Body>
           <Card.Title>Belajar Akuntansi dengan Mudah</Card.Title>
           <Card.Text>

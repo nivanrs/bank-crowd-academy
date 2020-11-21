@@ -1,21 +1,32 @@
 import React from "react";
-import axios from "axios";
+import { withRouter} from "react-router-dom";
+import { connect } from 'react-redux';
+//import axios from "axios";
+//import { useDispatch, useSelector } from "react-redux";
+//import Swal from "sweetalert2";
+//import withReactContent from "sweetalert2-react-content";
+import { login } from "../../actions/userActions";
 import { Container } from "react-bootstrap";
 import { Card } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 
-export default class Login extends React.Component {
-  state = {
-    email: '',
-    password: '',
+class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: {
+        username: '',
+        password: ''
+      }
+    }
   }
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   }
 
-  handleSubmit = event => {
+  handleSubmit = async (event) => {
     event.preventDefault();
 
     const user = {
@@ -23,11 +34,8 @@ export default class Login extends React.Component {
       password: this.state.password
     };
 
-    axios.post(`http://localhost:9000/api/login`, user, {headers: {"Content-Type" : "application/json"}})
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-      })
+    this.props.dispatch(login(user));
+    this.props.history.push('/course')
   }
 
   render() {
@@ -56,3 +64,11 @@ export default class Login extends React.Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    userLogin: state.user.account
+  }
+}
+
+export default connect(mapStateToProps)(withRouter(Login));
