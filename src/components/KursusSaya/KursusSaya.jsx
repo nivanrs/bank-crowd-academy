@@ -1,49 +1,48 @@
-import { CardDeck } from "react-bootstrap";
-import { Card } from "react-bootstrap";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Card, CardDeck, Jumbotron } from "react-bootstrap";
+import { GetCourse } from "../../actions/courseActions";
+import { logout } from "../../actions/userActions";
 
-export default function KursusSaya(props) {
+const KursusSaya = ({ history }) => {
+  const dispatch = useDispatch();
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { token } = userLogin;
+
+  useEffect(() => {
+    if (token) {
+      dispatch(GetCourse());
+    } else {
+      dispatch(logout());
+      history.push("/login")
+    }
+  }, [dispatch, history, token])
+
+  const courseData = useSelector((state) => state.courseData);
+  const { courses } = courseData;
+
   return (
-    <CardDeck>
-      <Card>
-        <Card.Img variant="top" />
-        <Card.Body>
-          <Card.Title>Investasi untuk Pemula</Card.Title>
-          <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
-          </Card.Text>
-        </Card.Body>
-      </Card>
-      <Card>
-        <Card.Img variant="top" />
-        <Card.Body>
-          <Card.Title>Perencanaan Keuangan untuk Pemula</Card.Title>
-          <Card.Text>
-            This card has supporting text below as a natural lead-in to
-            additional content.{" "}
-          </Card.Text>
-        </Card.Body>
-      </Card>
-      <Card>
-        <Card.Img variant="top" />
-        <Card.Body>
-          <Card.Title>Paham Laporan Keuangan</Card.Title>
-          <Card.Text>
-            This card has supporting text below as a natural lead-in to
-            additional content.{" "}
-          </Card.Text>
-        </Card.Body>
-      </Card>      
-      <Card>
-        <Card.Img variant="top" />
-        <Card.Body>
-          <Card.Title>Belajar Akuntansi dengan Mudah</Card.Title>
-          <Card.Text>
-            This card has supporting text below as a natural lead-in to
-            additional content.{" "}
-          </Card.Text>
-        </Card.Body>
-      </Card>
-    </CardDeck>
+    <div>
+      <Jumbotron className="px-4 py-4">
+        <CardDeck>
+          {courses.map((product) => (
+            <React.Fragment>
+              <Card key={product._id}>
+                <Card.Body>
+                  <Card.Title>{product.NamaKursus}</Card.Title>
+                  <Card.Text>{product.IDTopik}</Card.Text>
+                  <Card.Text>{product.PencapaianKursus}</Card.Text>
+                  <Card.Text>{product.FiturKursus}</Card.Text>
+                </Card.Body>
+                <Card.Footer>{product.HargaKursus}</Card.Footer>
+              </Card>
+            </React.Fragment>
+          ))}
+        </CardDeck>
+      </Jumbotron>
+    </div>
   );
 }
+
+export default KursusSaya;

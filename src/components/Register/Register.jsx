@@ -8,7 +8,7 @@ import { USER_REGISTER_STATUS_RESET } from "../../constants/userConstants";
 
 const MySwal = withReactContent(Swal);
 
-const Register = () => {
+const Register = ({ history }) => {
     const [FirstName, setFirstName] = useState("");
     const [LastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
@@ -30,15 +30,11 @@ const Register = () => {
             }).then((result) => {
                 if (result.isConfirmed) {
                     dispatch({ type: USER_REGISTER_STATUS_RESET });
-                    setFirstName("");
-                    setLastName("");
-                    setEmail("");
-                    setPassword("");
-                    setRole("");
+                    history.push("/login");
                 }
             });
         }
-    }, [status, dispatch]);
+    }, [status, dispatch, history]);
 
     useEffect(() => {
         if (error !== undefined) {
