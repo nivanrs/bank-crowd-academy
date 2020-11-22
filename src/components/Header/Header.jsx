@@ -1,19 +1,26 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Navbar } from "react-bootstrap";
-import { NavDropdown } from "react-bootstrap";
-import { Nav } from "react-bootstrap";
-import { Form } from "react-bootstrap";
-import { FormControl } from "react-bootstrap";
 import React from "react";
-import { Button } from "react-bootstrap";
-import { Image } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { Navbar, NavDropdown, Nav, Dropdown, Form, Button, Image } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 import icon from "../../assets/icon.png";
+import { logout } from '../../actions/userActions';
 
-export default function Header(props) {
+const Header = () => {
+  let history = useHistory();
+  const dispatch = useDispatch();
+
+  const account = localStorage.getItem("account");
+
+  const logoutHandler = () => {
+    dispatch(logout());
+    history.push('/login');
+  }
+
   return (
     <header>
-      <Navbar sticky="top" style={navbar} expand="lg">
-        <Navbar.Brand href="/" style={{ color: "#1A73A3" }}>
+      <Navbar className="menu" sticky="top" expand="lg" style={{ background: "#80C9F0" }}>
+        <Navbar.Brand href="/" style={{ color: "#000000" }}>
           <Image
             alt=""
             src={icon}
@@ -26,17 +33,10 @@ export default function Header(props) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="/" style={{ color: "#1A73A3" }}>
-              Beranda
-            </Nav.Link>
-            <Nav.Link href="/article" style={{ color: "#1A73A3" }}>
+            <Nav.Link href="/article" style={{ color: "#000000" }}>
               Artikel
             </Nav.Link>
-            <NavDropdown
-              title="Tren"
-              id="basic-nav-dropdown"
-              style={{ color: "#1A73A3" }}
-            >
+            <NavDropdown title="Tren" style={{ color: "#FFFFFF" }}>
               <NavDropdown.Item href="#action/3.1">
                 Kursus Paling Top
               </NavDropdown.Item>
@@ -81,20 +81,38 @@ export default function Header(props) {
           </Nav>
           
           <Form inline>
-            <FormControl className="mr-sm-2" type="text" placeholder="Search" />
+            <Form.Control className="mr-sm-2" type="text" placeholder="Search" />
             <Button variant="light" className="mr-sm-2">
               Search
             </Button>
           </Form>
-          <Nav.Link href='/login' style={{ color: "#1A73A3" }} className="mr-sm-2">
-            Masuk
-          </Nav.Link>
-          <Nav.Link href='/register' style={{ color: "#1A73A3" }} className="mr-sm-2">
-            Daftar
-          </Nav.Link>
+
+          {account ? (
+            <Dropdown id="dropdown-basic">
+              <Navbar.Brand>
+                <Dropdown.Toggle className="customDropdown">
+                  ({account})
+                </Dropdown.Toggle>
+              </Navbar.Brand>
+            <Dropdown.Menu>
+              <Dropdown.Item onClick={logoutHandler}>Logout</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          ) : (
+            <>
+              <Nav.Link href='/login' style={{ color: "#1A73A3" }} className="mr-sm-2">
+                Masuk
+              </Nav.Link>
+              <Nav.Link href='/register' style={{ color: "#1A73A3" }} className="mr-sm-2">
+                Daftar
+              </Nav.Link>
+            </>
+          )}
+
         </Navbar.Collapse>
       </Navbar>
     </header>
   );
 }
-const navbar = { backgroundColor: "#80C9F0" };
+
+export default Header;
