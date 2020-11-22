@@ -6,13 +6,12 @@ import {
   Redirect,
 } from "react-router-dom";
 import { useSelector } from "react-redux";
-//import { Container } from "react-bootstrap";
 import "./App.css";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
-import Login from "./components/Login/LoginTest";
+import Login from "./components/Login/Login";
 import Footer from "./components/Footer/Footer";
 import Register from "./components/Register/Register";
 import KursusSaya from "./components/KursusSaya/KursusSaya";

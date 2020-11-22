@@ -1,94 +1,138 @@
-import React from "react";
-import axios from "axios";
-import { Container } from "react-bootstrap";
-import { Card } from "react-bootstrap";
-import { Form } from "react-bootstrap";
-import { Row, Col } from "react-bootstrap";
-import { Button } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Container, Card, Form, Row, Col, Button } from "react-bootstrap";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import { register } from "../../actions/userActions";
+import { USER_REGISTER_STATUS_RESET } from "../../constants/userConstants";
 
-export default class Register extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      FirstName: '',
-      LastName: '',
-      email: '',
-      password: '',
-      role: '',
-    }
-    this.isVerified = React.createRef();
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+const MySwal = withReactContent(Swal);
 
-  handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
-  }
+const Register = () => {
+    const [FirstName, setFirstName] = useState("");
+    const [LastName, setLastName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [role, setRole] = useState("");
+    const isVerified = false;
 
-  handleSubmit = event => {
-    event.preventDefault();
+    const dispatch = useDispatch();
 
-    const registration = {
-      FirstName: this.state.FirstName,
-      LastName: this.state.LastName,
-      email: this.state.email,
-      password: this.state.password,
-      role: this.state.role,
-      isVerified: this.isVerified.current.value
+    const userRegister = useSelector((state) => state.userRegister);
+    const { error, status } = userRegister;
+
+    useEffect(() => {
+        if (status === "success") {
+            MySwal.fire({
+                title: "Sukses",
+                icon: "success",
+                text: "Register Berhasil. Silahkan Lakukan Verifikasi Akun",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    dispatch({ type: USER_REGISTER_STATUS_RESET });
+                    setFirstName("");
+                    setLastName("");
+                    setEmail("");
+                    setPassword("");
+                    setRole("");
+                }
+            });
+        }
+    }, [status, dispatch]);
+
+    useEffect(() => {
+        if (error !== undefined) {
+            MySwal.fire({
+                icon: "error",
+                title: error,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    setFirstName("");
+                    setLastName("");
+                    setEmail("");
+                    setPassword("");
+                    setRole("");
+                }
+            });
+        }
+    }, [error]);
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+        dispatch(register(FirstName, LastName, email, password, role, isVerified));
     };
 
-    axios.post(`http://localhost:9000/api/registration/add`, registration, {headers: {"Content-Type" : "application/json"}})
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-      })
-  }
-
-  render() {
-    return (
-      <Container style={{display: 'flex', justifyContent: 'center'}}>
-        <Card className="my-4" border="info" style={{ width: '40rem' }}>
-          <Card.Header className="text-center" style={{background: "#3498DB", color: "#FFFFFF"}}>Registrasi</Card.Header>
-          <Card.Body>
-          <Form onSubmit={this.handleSubmit}>
-            <Form.Group>
-              <Form.Label>Nama</Form.Label>
-              <Row>
-                <Col>
-                  <Form.Control type="text" placeholder="Masukkan Nama Depan" name="FirstName" onChange={this.handleChange} />
-                </Col>
-                <Col>
-                <Form.Control type="text" placeholder="Masukkan Nama Belakang" name="LastName" onChange={this.handleChange} />
-                </Col>
-              </Row>
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="email" placeholder="Masukkan Email" name="email" onChange={this.handleChange} />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Masukkan Password" name="password" onChange={this.handleChange} />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Pilih Jenis Akun</Form.Label>
-              <Form.Control as="select" name="role" onChange={this.handleChange}>
-                <option value="1">Pengajar</option>
-                <option value="2">Pelajar</option>
-              </Form.Control>
-            </Form.Group>
-            <Form.Group>
-              <Form.Control type="hidden" value="false" ref={this.isVerified} />
-            </Form.Group>
-            <Button variant="primary" type="submit">
-              Daftar
-            </Button>
-            </Form>
-            <p className="my-2">Sudah Memiliki akun? <a href='/login'>Masuk</a></p>
-          </Card.Body>
+  return (
+    <Container style={{display: 'flex', justifyContent: 'center'}}>
+        <Card className="my-4" border="info" style={{ width: '30rem' }}>
+            <Card.Header className="text-center" style={{background: "#3498DB", color: "#FFFFFF"}}>Masuk</Card.Header>
+            <Card.Body>
+                <Form onSubmit={submitHandler} className="form">
+                    <Form.Group controlId="FirstName" className="form-group">
+                        <Form.Label>Nama</Form.Label>
+                        <Row>
+                            <Col>
+                                <Form.Control
+                                    value={FirstName}
+                                    required
+                                    onChange={(e) => setFirstName(e.target.value)}
+                                    type="text"
+                                    name="FirstName"
+                                    placeholder="First Name"
+                                />
+                            </Col>
+                            <Col>
+                                <Form.Control
+                                    value={LastName}
+                                    required
+                                    onChange={(e) => setLastName(e.target.value)}
+                                    type="text"
+                                    name="LastName"
+                                    placeholder="Last Name"
+                                />
+                            </Col>
+                        </Row>
+                    </Form.Group>
+                    <Form.Group controlId="email" className="form-group">
+                    <Form.Label>Email</Form.Label>
+                        <Form.Control
+                            value={email}
+                            required
+                            onChange={(e) => setEmail(e.target.value)}
+                            type="text"
+                            name="email"
+                            placeholder="Email"
+                        />
+                    </Form.Group>
+                    <Form.Group controlId="password" className="form-group">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control
+                            value={password}
+                            required
+                            onChange={(e) => setPassword(e.target.value)}
+                            type="password"
+                            name="password"
+                            placeholder="Password"
+                        />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Pilih Jenis Akun</Form.Label>
+                        <Form.Control as="select" name="role" value={null} required onChange={(e) => setRole(e.target.value)}>
+                            <option selected disabled>Select Account</option>
+                            <option value="1">Pengajar</option>
+                            <option value="2">Pelajar</option>
+                        </Form.Control>
+                    </Form.Group>
+                    <div className="footer">
+                        <Button type="submit" variant="primary" className="btn">
+                            Daftar
+                        </Button>
+                    </div>
+                </Form>
+            </Card.Body>
         </Card>
-      </Container>
-    )
-  }
-  
-}
+    </Container>
+  );
+};
+
+export default Register;

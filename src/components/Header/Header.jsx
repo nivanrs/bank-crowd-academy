@@ -10,19 +10,12 @@ const Header = () => {
   let history = useHistory();
   const dispatch = useDispatch();
 
-  //const userLogin = useSelector((state) => state.userLogin)
-  //const { account, token } = userLogin
+  const account = localStorage.getItem("account");
 
   const logoutHandler = () => {
     dispatch(logout());
     history.push('/login');
   }
-
-  // useEffect(() => {
-  //   if (token) {
-  //     dispatch(account())
-  //   }
-  // }, [dispatch, history, token])
 
   return (
     <header>
@@ -94,23 +87,28 @@ const Header = () => {
             </Button>
           </Form>
 
-          <Nav.Link href='/login' style={{ color: "#1A73A3" }} className="mr-sm-2">
-            Masuk
-          </Nav.Link>
-          <Nav.Link href='/register' style={{ color: "#1A73A3" }} className="mr-sm-2">
-            Daftar
-          </Nav.Link>
-          
-          <Dropdown id="dropdown-basic">
-            <Navbar.Brand>
-              <Dropdown.Toggle className="customDropdown">
-                User
-              </Dropdown.Toggle>
-            </Navbar.Brand>
-          <Dropdown.Menu>
-            <Dropdown.Item onClick={logoutHandler}>Logout</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+          {account ? (
+            <Dropdown id="dropdown-basic">
+              <Navbar.Brand>
+                <Dropdown.Toggle className="customDropdown">
+                  ({account})
+                </Dropdown.Toggle>
+              </Navbar.Brand>
+            <Dropdown.Menu>
+              <Dropdown.Item onClick={logoutHandler}>Logout</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          ) : (
+            <>
+              <Nav.Link href='/login' style={{ color: "#1A73A3" }} className="mr-sm-2">
+                Masuk
+              </Nav.Link>
+              <Nav.Link href='/register' style={{ color: "#1A73A3" }} className="mr-sm-2">
+                Daftar
+              </Nav.Link>
+            </>
+          )}
+
         </Navbar.Collapse>
       </Navbar>
     </header>

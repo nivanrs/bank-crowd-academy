@@ -1,74 +1,99 @@
-import React from "react";
-import { withRouter} from "react-router-dom";
-import { connect } from 'react-redux';
-//import axios from "axios";
-//import { useDispatch, useSelector } from "react-redux";
-//import Swal from "sweetalert2";
-//import withReactContent from "sweetalert2-react-content";
-import { login } from "../../actions/userActions";
-import { Container } from "react-bootstrap";
-import { Card } from "react-bootstrap";
-import { Form } from "react-bootstrap";
-import { Button } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Container, Card, Form, Button } from "react-bootstrap";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import { login, UserAccount } from "../../actions/userActions";
 
-class Login extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      user: {
-        username: '',
-        password: ''
+const MySwal = withReactContent(Swal);
+
+const Login = ({ history }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const dispatch = useDispatch();
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const userAccount = useSelector((state) => state.userAccount);
+  const { error, token } = userLogin;
+  const { account } = userAccount;
+
+  useEffect(() => {
+    async function fetchData(){
+      if (token) {
+        MySwal.fire({
+          title: "Sukses",
+          icon: "success",
+          text: "Login Berhasil",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            history.push("/course");
+          }
+        });
       }
     }
-  }
+    fetchData();
+  }, [history, token, account]);
 
-  handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
-  }
+  useEffect(() => {
+    if (error && error !== undefined) {
+      MySwal.fire({
+        icon: "error",
+        title: error,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          setEmail("");
+          setPassword("");
+        }
+      });
+    }
+  }, [error]);
 
-  handleSubmit = async (event) => {
-    event.preventDefault();
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(login(email, password));
+    dispatch(UserAccount(email));
+  };
 
-    const user = {
-      email: this.state.email,
-      password: this.state.password
-    };
-
-    this.props.dispatch(login(user));
-    this.props.history.push('/course')
-  }
-
-  render() {
-    return (
-      <Container style={{display: 'flex', justifyContent: 'center'}}>
-        <Card className="my-4" border="info" style={{ width: '30rem' }}>
-          <Card.Header className="text-center" style={{background: "#3498DB", color: "#FFFFFF"}}>Masuk</Card.Header>
-          <Card.Body>
-            <Form onSubmit={this.handleSubmit}>
-              <Form.Group>
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Masukkan Email" name="email" onChange={this.handleChange} />
-              </Form.Group>
-              <Form.Group>
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Masukkan Password" name="password" onChange={this.handleChange} />
-              </Form.Group>
-              <Button variant="primary" type="submit">
-                Masuk
+  return (
+    <Container style={{display: 'flex', justifyContent: 'center'}}>
+      <Card className="my-4" border="info" style={{ width: '30rem' }}>
+        <Card.Header className="text-center" style={{background: "#3498DB", color: "#FFFFFF"}}>Masuk</Card.Header>
+        <Card.Body>
+          <Form onSubmit={submitHandler} className="form">
+            <Form.Group controlId="email" className="form-group">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                value={email}
+                required
+                onChange={(e) => setEmail(e.target.value)}
+                type="text"
+                name="email"
+                placeholder="Email"
+              />
+            </Form.Group>
+            <Form.Group controlId="password" className="form-group">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                value={password}
+                required
+                onChange={(e) => setPassword(e.target.value)}
+                type="password"
+                name="password"
+                placeholder="Password"
+              />
+            </Form.Group>
+            <div className="footer">
+              <Button type="submit" variant="primary" className="btn">
+                Login
               </Button>
-            </Form>
-            <p>Belum Memiliki akun? <a href='/register'>Daftar</a></p>
-          </Card.Body>
-        </Card>
-      </Container>
-    )
-  }
-}
+            </div>
+          </Form>
+          <p className="mt-2 mb-0">Belum Memiliki akun? <a href='/register'>Daftar</a></p>
+        </Card.Body>
+      </Card>
+    </Container>
+  );
+};
 
-const mapStateToProps = (state) => {
-  return {
-    userLogin: state.user.account
-  }
-}
-
-export default connect(mapStateToProps)(withRouter(Login));
+export default Login;

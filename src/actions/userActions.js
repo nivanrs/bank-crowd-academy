@@ -91,8 +91,8 @@ export const register = (FirstName, LastName, email, password, role, isVerified)
 };
 
 export const logout = () => (dispatch) => {
-  //localStorage.removeItem("account");
   localStorage.removeItem("token");
+  localStorage.removeItem("account");
   dispatch({
     type: USER_LOGOUT,
   })
