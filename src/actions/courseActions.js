@@ -25,7 +25,7 @@ export const GetCourse = () => async (dispatch, getState) => {
                 Authorization : `${token}`,
             },
         };
-        const { data } = await axios.get("http://localhost:9000/api/course/", config);
+        const { data } = await axios.get("http://3.82.93.151:9000/api/course/", config);
 
         dispatch({
             type: USER_COURSE_GET_SUCCESS,
@@ -63,7 +63,7 @@ export const AddCourse = ( NamaKursus, IDTopik, PencapaianKursus, FiturKursus, D
             },
         };
 
-        const { data: {data} } = await axios.post("http://localhost:9000/api/course/add", {
+        const { data: {data} } = await axios.post("http://3.82.93.151:9000/api/course/add", {
             NamaKursus: NamaKursus,
             IDTopik: IDTopik,
             PencapaianKursus: PencapaianKursus,
